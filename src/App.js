@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Link
 } from "react-router-dom";
 const contentful  = require('contentful');
 const client = contentful.createClient({
@@ -26,7 +27,9 @@ const Home = () => {
         {/* {getAllBlogList()} */}
         {blogList && blogList.length>0 ?  blogList.map((item)=>{
           return ( <>
-          <span>{item.fields.title} </span>
+          <h2>{item.fields.title} </h2>
+          <p>{item.fields.summary} <Link to="#"> Read More</Link></p>
+          <span>{item.fields.date}</span>
           </>
           );
           }) : null}
